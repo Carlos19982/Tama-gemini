@@ -59,10 +59,11 @@ export const ShowerGame: React.FC<ShowerGameProps> = ({ appearance, age, onCompl
 
     // Check collision with dirt
     setDirt(prev => {
-      // "Hitbox" for sponge is roughly 10% wide
+      // "Hitbox" for sponge calculation
+      // Reduced threshold from 10 to 6 to require closer contact
       const remaining = prev.filter(d => {
         const dist = Math.sqrt(Math.pow(d.x - x, 2) + Math.pow(d.y - y, 2));
-        return dist > 10; // Keep dirt if distance > 10
+        return dist > 6; 
       });
 
       if (remaining.length === 0 && prev.length > 0) {

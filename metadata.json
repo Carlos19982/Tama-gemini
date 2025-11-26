@@ -1,0 +1,5 @@
+{
+  "name": "Tamagotchi Life",
+  "description": "A feature-rich virtual pet simulator. Manage hunger, hygiene, and career. Play minigames to work (Flappy Bird style), shower, and eat. Features a progressive job system and a shop.",
+  "requestFramePermissions": []
+}

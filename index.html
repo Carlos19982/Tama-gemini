@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Tamagotchi Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+      
+      body {
+        font-family: 'VT323', monospace;
+        overscroll-behavior: none;
+        background-color: #0f172a; /* slate-900 */
+      }
+
+      /* Global Mobile Optimization */
+      * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      /* Allow text selection only in inputs if we had any */
+      input, textarea {
+        -webkit-user-select: text;
+        user-select: text;
+      }
+
+      /* Custom scrollbar for pixel art feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-900 text-slate-100 h-[100dvh] overflow-hidden selection:bg-pink-500 selection:text-white touch-manipulation">
+    <div id="root" class="h-full w-full"></div>
+  </body>
+</html>

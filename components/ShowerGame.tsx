@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { PetRender } from './PetRender';
 import { PetAppearance } from '../types';
@@ -19,7 +20,10 @@ export const ShowerGame: React.FC<ShowerGameProps> = ({ appearance, age, onCompl
     // Calculate current pet scale to place dirt correctly
     const growthStage = Math.min(age, MAX_GROWTH_AGE) / MAX_GROWTH_AGE;
     const scale = 0.6 + (0.4 * growthStage);
-    const range = 30 * scale; // Adjust dirt spread based on size
+    
+    // Reduced range slightly (was 30) to prevent dirt from appearing on the very edges
+    // where touch/collision might be harder or obstructed
+    const range = 22 * scale; 
 
     const newDirt = [];
     for(let i = 0; i < 15; i++) {
@@ -111,6 +115,7 @@ export const ShowerGame: React.FC<ShowerGameProps> = ({ appearance, age, onCompl
           appearance={appearance} 
           age={age}
           mood={isClean ? 'happy' : 'neutral'} 
+          disableJump={true}
           className="w-full h-full z-10"
         />
 

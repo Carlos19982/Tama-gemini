@@ -13,6 +13,7 @@ interface PetRenderProps {
   isPooping?: boolean; // Active state of pooping
   isEating?: boolean; // Active state of eating
   mouthOpen?: boolean; // New prop for feeding animation
+  disableJump?: boolean; // New prop to stop idle bouncing
   className?: string;
 }
 
@@ -26,6 +27,7 @@ export const PetRender: React.FC<PetRenderProps> = ({
   isPooping,
   isEating,
   mouthOpen = false,
+  disableJump = false,
   className 
 }) => {
   const [isBlinking, setIsBlinking] = useState(false);
@@ -51,7 +53,8 @@ export const PetRender: React.FC<PetRenderProps> = ({
   }, [mood, isPooping, isEating]);
 
   // Animation class logic
-  let animationClass = 'animate-[bounce_3s_infinite]';
+  // Default to bouncing unless disableJump is true
+  let animationClass = disableJump ? '' : 'animate-[bounce_3s_infinite]';
   
   if (mood === 'dead') animationClass = 'grayscale opacity-50';
   else if (mood === 'excited') animationClass = 'animate-[bounce_1s_infinite]';
@@ -335,8 +338,30 @@ export const PetRender: React.FC<PetRenderProps> = ({
 
   const renderPants = () => {
      if (!appearance.pants) return null;
-     // Placeholder for future pants rendering logic (Waist 155 to 185)
-     return null;
+     
+     let color = '#3b82f6';
+     let stroke = '#1d4ed8';
+
+     if (appearance.pants === 'bc_jeans') {
+        color = '#3b82f6'; // Blue Jeans
+        stroke = '#1d4ed8';
+     } else if (appearance.pants === 'gc_jeans') {
+        color = '#a855f7'; // Purple Pants
+        stroke = '#7e22ce';
+     }
+
+     return (
+        <g clipPath={`url(#${clipId})`}>
+           {/* Pants Body - covering bottom half of the capsule from waist down */}
+           <rect x="50" y="150" width="100" height="50" fill={color} />
+           
+           {/* Waistline detail (curved slightly to match shirt hem) */}
+           <path d="M 50 150 Q 100 160 150 150" stroke={stroke} strokeWidth="2" fill="none" opacity="0.3"/>
+           
+           {/* Center seam (zipper/fly area) */}
+           <line x1="100" y1="150" x2="100" y2="190" stroke={stroke} strokeWidth="1" opacity="0.3" />
+        </g>
+     );
   };
 
   const renderShoes = () => {

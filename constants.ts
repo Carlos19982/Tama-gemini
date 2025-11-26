@@ -40,11 +40,13 @@ export const FOOD_ITEMS: ShopItem[] = [
 export const BOY_CLOTHES: ShopItem[] = [
   { id: 'bc2', name: 'Camiseta Azul', category: 'CLOTHES_BOY', slot: 'BODY', cost: 50, image: '🟦' },
   { id: 'bc_stripe', name: 'Camiseta Rayas', category: 'CLOTHES_BOY', slot: 'BODY', cost: 75, image: '💈' },
+  { id: 'bc_jeans', name: 'Vaqueros', category: 'CLOTHES_BOY', slot: 'LEGS', cost: 60, image: '👖' },
 ];
 
 export const GIRL_CLOTHES: ShopItem[] = [
   { id: 'gc_tshirt', name: 'Camiseta Rosa', category: 'CLOTHES_GIRL', slot: 'BODY', cost: 50, image: '👚' },
   { id: 'gc_stripe', name: 'Camiseta Rayas', category: 'CLOTHES_GIRL', slot: 'BODY', cost: 75, image: '💈' },
+  { id: 'gc_jeans', name: 'Pantalón Lila', category: 'CLOTHES_GIRL', slot: 'LEGS', cost: 60, image: '👖' },
 ];
 
 export const ACCESSORIES: ShopItem[] = [
